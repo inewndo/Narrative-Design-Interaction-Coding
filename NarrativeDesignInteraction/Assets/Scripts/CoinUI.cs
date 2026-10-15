@@ -10,10 +10,6 @@ public class CoinUI : MonoBehaviour
     {
         GameController.instance.LoadCoinUI(this);
     }
-    public void Start()
-    {
-        //GameController.instance.coinInventory = this;
-    }
 
     public void CoinUpdate(int coins)
     {

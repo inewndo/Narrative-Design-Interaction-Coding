@@ -5,45 +5,27 @@ using UnityEngine.InputSystem;
 
 public class QuestInteract : MonoBehaviour
 {
-    public TextMeshProUGUI interactText;
-    public bool canInteract;
     public UpdateDialoguePhase ChangePhase;
+    public string ratID;
+
+    public void Awake()
+    {
+        ratID = this.name + "_" + transform.position.ToString();
+
+    }
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            SetText("Press E to interact");
-            canInteract = true;
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            SetText("");
-            canInteract = false;
-        }
-    }
-
-    public void SetText(string txt)
-    {
-        interactText.text = txt;
-    }
-
-    public void Update()
-    {
-        if (Keyboard.current.qKey.wasPressedThisFrame)
-        {
-            if (Keyboard.current.eKey.wasPressedThisFrame)
+            DestroyRats();
+            if(GameController.instance.totalRats == 5)
             {
-
                 ChangePhase.Invoke("questCompleted");
-                canInteract = false;
             }
         }
     }
+
     public void DestroyRats() 
     {
         this.GetComponent<MeshRenderer>().enabled = false;

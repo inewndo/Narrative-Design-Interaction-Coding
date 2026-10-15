@@ -10,17 +10,20 @@ public class GameController : MonoBehaviour
     public static GameController instance { get; private set; }
 
     public AddCoins coinUpdate;
+    public AddRats ratUpdate;
 
     public int totalCoins = 0;
     public int totalRats = 0;
 
     public CoinUI coinInventory;
+    public RatUI ratInventory;
     public GameObject ThirdPersonRig;
     public Transform mainStartingTransform;
     public Vector3 loadPos;
     public Quaternion loadRot;
 
     public List<string> coinsCollected;
+    public List<string> ratsCollected;
 
     public void Awake()
     {
@@ -61,6 +64,7 @@ public class GameController : MonoBehaviour
             }
             coinUpdate.AddListener(coinInventory.CoinUpdate);
             LoadCoins();
+            
         }
     }
 
@@ -95,9 +99,9 @@ public class GameController : MonoBehaviour
     {
         
         totalRats++;
-        //coinUpdate.Invoke(totalRats);
+        ratUpdate.Invoke(totalRats);
         
-        //coinsCollected.Add(ratID);
+        ratsCollected.Add(ratID);
     }
 
     public void SceneChangeCheck()
@@ -120,11 +124,30 @@ public class GameController : MonoBehaviour
             }
         }
     }
+    public void LoadRats()
+    {
+        QuestInteract[] allRatsInScene = FindObjectsByType<QuestInteract>();
+        if (coinsCollected != null)
+        {
+            //make comparison- if object with the same idea has already been added to the list of the collected coins - destroy it
+            foreach (QuestInteract rat in allRatsInScene)
+            {
+                if (ratsCollected.Contains(rat.ratID))
+                {
+                    Destroy(rat.gameObject);
+                }
+            }
+        }
+    }
 
     //this is a 'setter' method for my coinInventory variable
     public void LoadCoinUI(CoinUI ui)
     {
         coinInventory = ui;
+    }
+    public void LoadRatUI(RatUI ui)
+    {
+        ratInventory = ui;
     }
 
     //this is a method that is called by startDialogue event in DialogueRUnner class
@@ -157,7 +180,7 @@ public class AddCoins : UnityEvent<int>
 }
 
 [System.Serializable]
-public class AddDiamonds : UnityEvent<int>
+public class AddRats : UnityEvent<int>
 {
 
 }

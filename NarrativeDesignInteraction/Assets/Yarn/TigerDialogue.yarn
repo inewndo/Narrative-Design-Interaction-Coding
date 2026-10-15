@@ -57,19 +57,23 @@ Tiger: They are swarming my house!!!
 title: Beg
 position: 609,406
 ---
-<<CamMove TigerNPCCamRig "npc">>
-Tiger: Get lost elsewhere!
+Tiger: Please help me!
 <<CamMove TigerNPCCamRig "pc">>
 You: NOOOO!!
-You: Please!
-You: Look I can pay you for it!!
+You: I am scared of rats too!
+You: No way in hell!
 <<CamMove TigerNPCCamRig "npc">>
 Tiger: ...
-Tiger: How much have you got?
+Tiger: Look I will even sell you my beloved gloves so you can catch them.
 <<CamMove TigerNPCCamRig "pc">>
-You: I have {$money} coins!
+You: ...
+You: You want my help AND I have to pay you??
 <<CamMove TigerNPCCamRig "npc">>
-Tiger: Lol you are so poor.
+Tiger: Have you seen the current state of economy?
+<<CamMove TigerNPCCamRig "pc">>
+You: Okay fair.
+You: How much?
+<<CamMove TigerNPCCamRig "pc">>
 Tiger: Tell you what, I will give you the house if you become my maid for a week.
     ->What? No way weirdo. 
         <<GetPhase TigerNPC comeback>>
