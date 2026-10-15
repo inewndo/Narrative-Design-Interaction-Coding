@@ -93,27 +93,7 @@ public class NPCInteract : MonoBehaviour
         {
             Debug.LogError("The string you passed in the YarnScript does not match any current dialogue phase in the NPC Data Scriptable Object");
         }
-
-        if (phase == "npc2_comeback")
-        {
-            storyData.currentPhase = NPCData.dialoguePhase.comeback;
-        }
-        else if (phase == "npc2_questStarted")
-        {
-            storyData.currentPhase = NPCData.dialoguePhase.questStarted;
-        }
-        else if (phase == "npc2_questCompleted")
-        {
-            storyData.currentPhase = NPCData.dialoguePhase.questCompleted;
-        }
-        else if (phase == "npc2_rewardGiven")
-        {
-            storyData.currentPhase = NPCData.dialoguePhase.rewardGiven;
-        }
-        else
-        {
-            Debug.LogError("The string you passed in the YarnScript does not match any current dialogue phase in the NPC Data Scriptable Object");
-        }
+        
     }
 
     public void OnApplicationQuit()

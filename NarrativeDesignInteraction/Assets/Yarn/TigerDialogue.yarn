@@ -6,7 +6,7 @@ title: LoadPhase
 ---
 <<declare $dialoguePhase="">>
 <<declare $hasVisited = false>>
-<<SetPhase Npc>>
+<<SetPhase TigerNPC>>
 //the npc gameobject.name called in the set phase command should map to the specific npc you want to reference
 //for instance if you have particualr gameobject npc you want this to call from make sure you use that gameobject name
 <<if $dialoguePhase == "begin">>
@@ -22,5 +22,105 @@ title: LoadPhase
 <<else>>
 Tiger: dude you suck, fix ur code.
 <<endif>>
-
+===
+title: variables
+---
+<<declare $money = 10>>
+<<declare $lost = false>>
+<<declare $insane = false>>
+===
+title: Start
+position: 241,1
+---
+<<CamMove TigerNPCCamRig "npc">>
+<<set $hasVisited = true>>
+Tiger: Hello, stranger! Nice to meet you.
+Tiger: Why are you in my house?
+<<CamMove TigerNPCCamRig "pc">>
+You: I got lost.
+<<jump Inquiry>>
+===
+title: Inquiry
+position: 285,274
+---
+<<CamMove TigerNPCCamRig "npc">>
+Tiger: So what do you need from me?
+<<CamMove TigerNPCCamRig "pc">>
+You: I want your house.
+<<CamMove TigerNPCCamRig "npc">>
+Tiger: ...
+Tiger: Are you insane?
+Tiger: Get out!
+<<jump Beg>>
+===
+title: Beg
+position: 609,406
+---
+<<CamMove TigerNPCCamRig "npc">>
+Tiger: Get lost elsewhere!
+<<CamMove TigerNPCCamRig "pc">>
+You: NOOOO!!
+You: Please!
+You: Look I can pay you for it!!
+<<CamMove TigerNPCCamRig "npc">>
+Tiger: ...
+Tiger: How much have you got?
+<<CamMove TigerNPCCamRig "pc">>
+You: I have {$money} coins!
+<<CamMove TigerNPCCamRig "npc">>
+Tiger: Lol you are so poor.
+Tiger: Tell you what, I will give you the house if you become my maid for a week.
+    ->What? No way weirdo. 
+        <<GetPhase TigerNPC comeback>>
+        <<CamMove TigerNPCCamRig "return">>
+    ->. . . Fine...
+        <<GetPhase TigerNPC questStarted>>
+        <<jump questStarted>>
+===
+title: comeback
+---
+Tiger: Changed your mind?
+    ->No.
+        You: Still not that desperate. 
+        <<CamMove TigerNPCCamRig "return">>
+    ->. . . Fine...
+        <<GetPhase TigerNPC questStarted>>
+        <<jump questStarted>>
+===
+title: questStarted
+---
+<<once>>
+Tiger: Lovely!
+Tiger: So your chores are: . . .
+Tiger: Go talk to the boxes.
+You: . . .
+You: What?
+Tiger: ?
+You: You know what, I don't even want to know.
+<<endonce>>
+<<CamMove TigerNPCCamRig "return">>
+===
+title: questCompleted
+---
+<<if $hasVisited == true>>
+    Tiger: Good job!
+    Tiger: House is yours!
+<<else>>
+    Tiger: Are you talking to my boxes without permission?
+    You: . . . Sorry...
+    Tiger: It is ok, lol.
+    Tiger: House is yours now btw. Congrats!
+<<endif>>
+<<GetPhase TigerNPC rewardGiven>>
+<<CamMove TigerNPCCamRig "return">>
+===
+title: rewardGiven
+---
+<<declare $reply = random_range(1, 2)>>
+<<if $reply == 1>>
+    Tiger: I am just packing and I will be out of your hair!
+<<elseif $reply == 2>>
+    Tiger: I am leaving! I am leaving!
+<<endif>>
+<<CamMove TigerNPCCamRig "return">>
 ===

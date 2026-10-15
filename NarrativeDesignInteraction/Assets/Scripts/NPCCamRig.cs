@@ -4,12 +4,6 @@ using Yarn.Unity;
 
 public class NPCCamRig : MonoBehaviour
 {
-    //TODO
-    //DONE Switch between the different transforms to set what view our camera is
-    //DONE Switch from tpc to camera rig using cinemachine priority
-    //DONE Set when the switch will happen by having yarnspinner call the correct method
-    //DONE Switch back from the NPC cam to tpc
-
     public Transform nPCLoc;
     public Transform pCLoc;
     public Transform pcMoveLoc;
