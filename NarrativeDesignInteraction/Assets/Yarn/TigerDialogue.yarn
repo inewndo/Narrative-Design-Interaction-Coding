@@ -74,13 +74,17 @@ Tiger: Have you seen the current state of economy?
 You: Okay fair.
 You: How much?
 <<CamMove TigerNPCCamRig "pc">>
-Tiger: Tell you what, I will give you the house if you become my maid for a week.
-    ->What? No way weirdo. 
-        <<GetPhase TigerNPC comeback>>
-        <<CamMove TigerNPCCamRig "return">>
-    ->. . . Fine...
-        <<GetPhase TigerNPC questStarted>>
-        <<jump questStarted>>
+Tiger: 10 coins!
+-> That's a lot!
+->Where do I even get this much??
+<<jump questStarted>>
+<<CamMove TigerNPCCamRig "return">>
+    // ->What? No way weirdo. 
+    //     <<GetPhase TigerNPC comeback>>
+    //     <<CamMove TigerNPCCamRig "return">>
+    // ->. . . Fine...
+    //     <<GetPhase TigerNPC questStarted>>
+    //     <<jump questStarted>>
 ===
 title: comeback
 ---
@@ -96,12 +100,8 @@ title: questStarted
 ---
 <<once>>
 Tiger: Lovely!
-Tiger: So your chores are: . . .
-Tiger: Go talk to the boxes.
-You: . . .
-You: What?
-Tiger: ?
-You: You know what, I don't even want to know.
+Tiger: So here are the gloves.
+Tiger: Goodluck!.
 <<endonce>>
 <<CamMove TigerNPCCamRig "return">>
 ===

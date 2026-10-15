@@ -22,6 +22,7 @@ public class QuestInteract : MonoBehaviour
             if(GameController.instance.totalRats == 5)
             {
                 ChangePhase.Invoke("questCompleted");
+                Debug.Log("Quest Completed");
             }
         }
     }
