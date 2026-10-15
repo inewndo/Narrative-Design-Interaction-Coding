@@ -63,59 +63,25 @@ You: NOOOO!!
 You: I am scared of rats too!
 You: No way in hell!
 <<CamMove TigerNPCCamRig "npc">>
-Tiger: ...
-Tiger: Look I will even sell you my beloved gloves so you can catch them.
+Tiger: Please!!!
 <<CamMove TigerNPCCamRig "pc">>
-You: ...
-You: You want my help AND I have to pay you??
-<<CamMove TigerNPCCamRig "npc">>
-Tiger: Have you seen the current state of economy?
-<<CamMove TigerNPCCamRig "pc">>
-You: Okay fair.
-You: How much?
-<<CamMove TigerNPCCamRig "pc">>
-Tiger: 10 coins!
--> That's a lot!
-->Where do I even get this much??
+You: Ugh fine.
 <<jump questStarted>>
 <<CamMove TigerNPCCamRig "return">>
-    // ->What? No way weirdo. 
-    //     <<GetPhase TigerNPC comeback>>
-    //     <<CamMove TigerNPCCamRig "return">>
-    // ->. . . Fine...
-    //     <<GetPhase TigerNPC questStarted>>
-    //     <<jump questStarted>>
-===
-title: comeback
----
-Tiger: Changed your mind?
-    ->No.
-        You: Still not that desperate. 
-        <<CamMove TigerNPCCamRig "return">>
-    ->. . . Fine...
-        <<GetPhase TigerNPC questStarted>>
-        <<jump questStarted>>
 ===
 title: questStarted
 ---
 <<once>>
+<<CamMove TigerNPCCamRig "npc">>
 Tiger: Lovely!
-Tiger: So here are the gloves.
 Tiger: Goodluck!.
 <<endonce>>
 <<CamMove TigerNPCCamRig "return">>
 ===
 title: questCompleted
 ---
-<<if $hasVisited == true>>
-    Tiger: Good job!
-    Tiger: House is yours!
-<<else>>
-    Tiger: Are you talking to my boxes without permission?
-    You: . . . Sorry...
-    Tiger: It is ok, lol.
-    Tiger: House is yours now btw. Congrats!
-<<endif>>
+Tiger: Good job!
+Tiger: Thank you so much!
 <<GetPhase TigerNPC rewardGiven>>
 <<CamMove TigerNPCCamRig "return">>
 ===
@@ -123,9 +89,9 @@ title: rewardGiven
 ---
 <<declare $reply = random_range(1, 2)>>
 <<if $reply == 1>>
-    Tiger: I am just packing and I will be out of your hair!
+    Tiger: I forever owe you!
 <<elseif $reply == 2>>
-    Tiger: I am leaving! I am leaving!
+    Tiger: Thank you so much!
 <<endif>>
 <<CamMove TigerNPCCamRig "return">>
 ===

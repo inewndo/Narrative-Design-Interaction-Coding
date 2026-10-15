@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class QuestInteract : MonoBehaviour
 {
-    public UpdateDialoguePhase ChangePhase;
+
     public string ratID;
 
     public void Awake()
@@ -19,11 +19,7 @@ public class QuestInteract : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             DestroyRats();
-            if(GameController.instance.totalRats == 5)
-            {
-                ChangePhase.Invoke("questCompleted");
-                Debug.Log("Quest Completed");
-            }
+            
         }
     }
 
@@ -34,10 +30,4 @@ public class QuestInteract : MonoBehaviour
         this.GetComponent<SphereCollider>().enabled = false;
     }
     
-}
-
-[System.Serializable]
-public class UpdateDialoguePhase : UnityEvent<string>
-{
-
 }

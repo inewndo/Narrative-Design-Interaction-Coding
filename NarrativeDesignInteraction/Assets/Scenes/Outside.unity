@@ -2370,7 +2370,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1742954043}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1237031824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2422,6 +2422,9 @@ MonoBehaviour:
   loadRot: {x: 0, y: 0, z: 0, w: 0}
   coinsCollected: []
   ratsCollected: []
+  ChangePhase:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1237031824
 Transform:
   m_ObjectHideFlags: 0
@@ -2437,6 +2440,8 @@ Transform:
   m_Children:
   - {fileID: 155641985}
   - {fileID: 1725878472}
+  - {fileID: 4941742883894771}
+  - {fileID: 1120088664}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1358640860
@@ -6960,12 +6965,12 @@ Transform:
   m_GameObject: {fileID: 1736734363466579}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.49805713, z: -0, w: 0.8671443}
-  m_LocalPosition: {x: -0.06609993, y: 0.00000023945825, z: -9.109979}
+  m_LocalPosition: {x: -3.448, y: 0, z: -12.650028}
   m_LocalScale: {x: 2.6558, y: 2.6558, z: 2.6558}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 174437704}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1237031824}
   m_LocalEulerAnglesHint: {x: 0, y: -59.743, z: 0}
 --- !u!23 &23573722354382567
 MeshRenderer:
@@ -7036,6 +7041,4 @@ SceneRoots:
   - {fileID: 305497345}
   - {fileID: 160189002}
   - {fileID: 736072198}
-  - {fileID: 4941742883894771}
-  - {fileID: 1120088664}
   - {fileID: 209270311}

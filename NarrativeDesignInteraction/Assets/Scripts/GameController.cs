@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
 
     public List<string> coinsCollected;
     public List<string> ratsCollected;
+    public UpdateDialoguePhase ChangePhase;
 
     public void Awake()
     {
@@ -62,7 +63,7 @@ public class GameController : MonoBehaviour
                 //if has already presaved coordinates - use them
                 SpawnThirdPersonPrefab(loadPos, loadRot);
             }
-            coinUpdate.AddListener(coinInventory.CoinUpdate);
+            //coinUpdate.AddListener(coinInventory.CoinUpdate);
             LoadCoins();
             
         }
@@ -127,7 +128,7 @@ public class GameController : MonoBehaviour
     public void LoadRats()
     {
         QuestInteract[] allRatsInScene = FindObjectsByType<QuestInteract>();
-        if (coinsCollected != null)
+        if (ratsCollected != null)
         {
             //make comparison- if object with the same idea has already been added to the list of the collected coins - destroy it
             foreach (QuestInteract rat in allRatsInScene)
@@ -137,6 +138,12 @@ public class GameController : MonoBehaviour
                     Destroy(rat.gameObject);
                 }
             }
+        }
+
+        if (totalRats == 5)
+        {
+            ChangePhase.Invoke("questCompleted");
+            Debug.Log("Quest Completed");
         }
     }
 
@@ -181,6 +188,12 @@ public class AddCoins : UnityEvent<int>
 
 [System.Serializable]
 public class AddRats : UnityEvent<int>
+{
+
+}
+
+[System.Serializable]
+public class UpdateDialoguePhase : UnityEvent<string>
 {
 
 }
