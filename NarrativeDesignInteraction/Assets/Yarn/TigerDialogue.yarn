@@ -34,23 +34,24 @@ position: 241,1
 ---
 <<CamMove TigerNPCCamRig "npc">>
 <<set $hasVisited = true>>
-Tiger: Hello, stranger! Nice to meet you.
-Tiger: Why are you in my house?
+Tiger: Oh, thank god!
+Tiger: Someone at last!
 <<CamMove TigerNPCCamRig "pc">>
-You: I got lost.
+You: Hey you okay?
 <<jump Inquiry>>
 ===
 title: Inquiry
 position: 285,274
 ---
 <<CamMove TigerNPCCamRig "npc">>
-Tiger: So what do you need from me?
+Tiger: No, not really!
+Tiger: My house!
 <<CamMove TigerNPCCamRig "pc">>
-You: I want your house.
+You: What's wrong with your house?
 <<CamMove TigerNPCCamRig "npc">>
-Tiger: ...
-Tiger: Are you insane?
-Tiger: Get out!
+Tiger: RATS!!!
+Tiger: LOTS and LOTS of RATS!!!!
+Tiger: They are swarming my house!!!
 <<jump Beg>>
 ===
 title: Beg

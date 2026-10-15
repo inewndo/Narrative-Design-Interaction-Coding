@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public AddCoins coinUpdate;
 
     public int totalCoins = 0;
+    public int totalRats = 0;
 
     public CoinUI coinInventory;
     public GameObject ThirdPersonRig;
@@ -89,7 +90,16 @@ public class GameController : MonoBehaviour
         //invokes th UI to add a coin to the string count (not working atm)
         coinsCollected.Add(coinID);
     }
- 
+
+    public void RatsCollect(string ratID)
+    {
+        
+        totalRats++;
+        //coinUpdate.Invoke(totalRats);
+        
+        //coinsCollected.Add(ratID);
+    }
+
     public void SceneChangeCheck()
     {
         Debug.Log("You have changed scenes.Current Coin Amount:" + totalCoins.ToString());
