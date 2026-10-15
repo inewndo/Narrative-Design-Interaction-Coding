@@ -1,0 +1,26 @@
+title: TigerDialogue
+---
+This is an example of a Yarn Spinner script. Write your dialogue here!
+===
+title: LoadPhase
+---
+<<declare $dialoguePhase="">>
+<<declare $hasVisited = false>>
+<<SetPhase Npc>>
+//the npc gameobject.name called in the set phase command should map to the specific npc you want to reference
+//for instance if you have particualr gameobject npc you want this to call from make sure you use that gameobject name
+<<if $dialoguePhase == "begin">>
+<<jump Start>>
+<<elseif $dialoguePhase == "comeback">>
+<<jump comeback>>
+<<elseif $dialoguePhase == "questStarted">>
+<<jump questStarted>>
+<<elseif $dialoguePhase == "questCompleted">>
+<<jump questCompleted>>
+<<elseif $dialoguePhase == "rewardGiven">>
+<<jump rewardGiven>>
+<<else>>
+Tiger: dude you suck, fix ur code.
+<<endif>>
+
+===
